@@ -1,0 +1,10 @@
+# Mac OS X files
+.DS_Store
+**/.DS_Store
+
+# NPM packages
+node_modules
+
+# NPM log
+npm-debug.log
+npm-debug.log
