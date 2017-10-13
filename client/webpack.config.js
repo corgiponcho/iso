@@ -1,7 +1,11 @@
-const path = require('path');
+const Path = require('path');
 const webpack = require('webpack');
+const isProduction = process.env.NODE_ENV === 'production';
+const port = isProduction ?
+  process.env.PORT || 8080 :
+  process.env.PORT || 3000;
 
-module.exports = {
+webpackConfig = {
   entry: './src/index.jsx',
   output: { path: __dirname, filename: 'bundle.js' },
   module: {
@@ -21,3 +25,17 @@ module.exports = {
     ]
   },
 };
+
+// dev server
+if (!isProduction) {
+  webpackConfig.devServer = {
+    contentBase: Path.join(__dirname, './'),
+    // hot: false,
+    port: port,
+    inline: true,
+    progress: true,
+    historyApiFallback: true,
+  };
+}
+
+module.exports = webpackConfig;

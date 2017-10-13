@@ -2,11 +2,10 @@
   "name": "iso",
   "version": "1.0.0",
   "description": "",
-  "main": "./server/index.js",
+  "main": "index.js",
   "scripts": {
-    "server": "cd ./server && node index.js",
-    "client": "cd ./client && webpack --progress --colors --watch",
-    "dev": "npm run server & npm run client"
+    "server": "node server.js",
+    "start:dev": "cd ./client && webpack-dev-server --progress --colors --watch"
   },
   "repository": {
     "type": "git",
@@ -30,9 +29,11 @@
     "dotenv": "^4.0.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
+    "logger": "0.0.1",
     "nodemon": "^1.12.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-router-dom": "^4.2.2",
     "style-loader": "^0.19.0",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
