@@ -6,5 +6,5 @@ npm install
 
 run in dev mode
 ```
-npm run dev
+npm run start:dev
 ```
