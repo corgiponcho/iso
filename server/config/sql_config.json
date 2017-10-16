@@ -1,0 +1,18 @@
+{
+  "development": {
+    "username": "jon",
+    "password": null,
+    "database": "iso",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "jon",
+    "password": null,
+    "database": "iso-test",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}

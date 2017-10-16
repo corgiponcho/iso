@@ -6,7 +6,8 @@
   "scripts": {
     "server": "node server.js",
     "start:dev": "cd ./client && webpack-dev-server --progress --colors --watch",
-    "test": "jest"
+    "test": "jest",
+    "test:sql": "cd ./models && node database.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,8 @@
   "homepage": "https://bitbucket.org/corgiponcho/iso#readme",
   "dependencies": {
     "express": "^4.16.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "pg": "^7.3.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
@@ -40,6 +42,8 @@
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.2.2",
     "react-test-renderer": "^16.0.0",
+    "sequelize": "^4.14.0",
+    "sequelize-cli": "^3.0.0",
     "style-loader": "^0.19.0",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
