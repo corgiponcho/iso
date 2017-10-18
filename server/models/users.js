@@ -1,17 +1,24 @@
-// const Sequelize = require('sequelize');
-
-module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define('user', {
-    email:      { type: Sequelize.STRING },
-    firstname:  { type: Sequelize.STRING },
-    lastname:   { type: Sequelize.STRING },
-    username:   { type: Sequelize.STRING },
-    rating:     { type: Sequelize.DECIMAL },
-    lat:        { type: Sequelize.DECIMAL },
-    lon:        { type: Sequelize.DECIMAL }
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define('User', {
+    // id: {
+    //   type: DataTypes.INTEGER,
+    //   primaryKey: true,
+    //   autoIncrement: true,
+    //   allowNull: false
+    // },
+    email:      { type: DataTypes.STRING },
+    firstname:  { type: DataTypes.STRING },
+    lastname:   { type: DataTypes.STRING },
+    username:   { type: DataTypes.STRING },
+    rating:     { type: DataTypes.DECIMAL },
+    lat:        { type: DataTypes.DECIMAL },
+    lon:        { type: DataTypes.DECIMAL }
   });
 
   // create associates here
+  User.associate = (models) => {
+    User.hasMany(models.Post)
+  }
 
   // see documentation here: http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html
   // class methods

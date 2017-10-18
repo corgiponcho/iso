@@ -1,38 +1,30 @@
 const env = process.env.NODE_ENV || 'development';
 const path = require('path');
 const Sequelize = require('sequelize');
-const { Pool, Client } = require('pg');
-const post = require('./posts.js');
-const user = require('./users.js');
+const Post = require('./posts.js');
+const User = require('./users.js');
 const config = require(__dirname + '/../config/sql_config.json')[env];
+const { Pool, Client } = require('pg');
 
 // establish connection using sequelize
 const { database, username, password, host, port } = config;
 const connectionString = `postgres://${username}:${password}@${host}:${port}/${database}`;
 const sequelize = new Sequelize(connectionString);
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-    // create user table
-    // see more methods here: http://docs.sequelizejs.com/class/lib/model.js~Model.html
-    const User = user(sequelize, Sequelize);
+// add tables here
+const db = {
+  User: User(sequelize, Sequelize.DataTypes),
+  Post: Post(sequelize, Sequelize.DataTypes)
+};
 
-    User.sync({force: false}).then(() => {
-      console.log("User table successfully created")
-    });
+Object.keys(db).forEach(function(modelName) {
+  if ("associate" in db[modelName]) {
+    db[modelName].associate(db);
+    console.log("associate created")
+  }
+});
 
-    // create post table
-    const Post = post(sequelize);
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
-    // create Post table
-    Post.sync({force: false}).then(() => {
-      console.log("Post table successfully created")
-    });
-
-
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+module.exports = db;
