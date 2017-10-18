@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Post = sequelize.define('Post', {
+  const Post = sequelize.define('post', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -15,13 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   // see documentation here: http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html
   // class methods
   Post.associate = (models) => {
-    Post.belongsTo(models.User, {
-      foreignKey: 'creator_id'
-    });
-
-
+    Post.belongsTo(models.User);
   }
-
   // instance methods
   Post.prototype.getTitle = () => {
     console.log(this.title);

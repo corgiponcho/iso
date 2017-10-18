@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+  const User = sequelize.define('user', {
     // id: {
     //   type: DataTypes.INTEGER,
     //   primaryKey: true,
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
 
   // create associates here
   User.associate = (models) => {
-    User.hasMany(models.Post)
+    User.hasMany(models.Post);
   }
 
   // see documentation here: http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html

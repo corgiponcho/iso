@@ -1,31 +1,28 @@
 module.exports = (sequelize, DataTypes) => {
-  // const Items = sequelize.define('Post', {
-  //   id: {
-  //     type: DataTypes.INTEGER,
-  //     primaryKey: true,
-  //     autoIncrement: true,
-  //     allowNull: false
-  //   },
-  //   title:  { type: DataTypes.STRING },
-  //   status: { type: DataTypes.STRING },
-  //   lat:    { type: DataTypes.DECIMAL },
-  //   lon:    { type: DataTypes.DECIMAL }
-  // });
-  //
-  // // see documentation here: http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html
-  // // class methods
-  // Post.associate = (models) => {
-  //   Post.belongsTo(models.User, {
-  //     foreignKey: 'creator_id'
-  //   });
-  //
-  //
-  // }
-  //
-  // // instance methods
-  // Post.prototype.getTitle = () => {
-  //   console.log(this.title);
-  // }
-  //
-  // return Post;
+  const Item = sequelize.define('item', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
+    name:        { type: DataTypes.STRING },
+    description: { type: DataTypes.STRING },
+    condition:   { type: DataTypes.STRING },
+    deposit:     { type: DataTypes.DECIMAL }
+  });
+
+  // see documentation here: http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html
+  // class methods
+  Item.associate = (models) => {
+    Item.belongsTo(models.User);
+    Item.belongsTo(models.Post);
+  }
+
+  // instance methods
+  Item.prototype.getName = () => {
+    console.log(this.name);
+  }
+
+  return Item;
 }
