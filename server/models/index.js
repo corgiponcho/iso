@@ -21,12 +21,12 @@ const sequelize = new Sequelize(connectionString);
 const db = {
   User: User(sequelize, Sequelize.DataTypes),
   Post: Post(sequelize, Sequelize.DataTypes),
-  // Item: Item(sequelize, Sequelize.DataTypes),
-  // Media: Media(sequelize, Sequelize.DataTypes),
-  // Fee: Fee(sequelize, Sequelize.DataTypes),
-  // Booking: Booking(sequelize, Sequelize.DataTypes),
-  // Time: Time(sequelize, Sequelize.DataTypes),
-  // Reviews: Reviews(sequelize, Sequelize.DataTypes),
+  Item: Item(sequelize, Sequelize.DataTypes),
+  Media: Media(sequelize, Sequelize.DataTypes),
+  Fee: Fee(sequelize, Sequelize.DataTypes),
+  Booking: Booking(sequelize, Sequelize.DataTypes),
+  Time: Time(sequelize, Sequelize.DataTypes),
+  Reviews: Reviews(sequelize, Sequelize.DataTypes),
 };
 
 Object.keys(db).forEach(function(modelName) {
