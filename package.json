@@ -7,7 +7,7 @@
     "server": "node server.js",
     "start:dev": "cd ./client && webpack-dev-server --progress --colors --watch",
     "test:jest": "jest",
-    "test:mocha": "mocha  --timeout 10000 ./server/tests/*.js",
+    "test:mocha": "mocha --exit --timeout 10000 ./server/tests/*.js",
     "test:sql": "cd ./models && node database.js"
   },
   "repository": {
