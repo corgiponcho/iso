@@ -15,7 +15,7 @@ const { Pool, Client } = require('pg');
 // establish connection using sequelize
 const { database, username, password, host, port } = config;
 const connectionString = `postgres://${username}:${password}@${host}:${port}/${database}`;
-const sequelize = new Sequelize(connectionString);
+const sequelize = new Sequelize(connectionString, { logging: false });
 
 // add tables here
 const db = {
