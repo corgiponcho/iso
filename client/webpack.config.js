@@ -1,41 +1,71 @@
 const Path = require('path');
 const webpack = require('webpack');
-const isProduction = process.env.NODE_ENV === 'production';
-const port = isProduction ?
-  process.env.PORT || 8080 :
-  process.env.PORT || 3000;
 
-webpackConfig = {
-  entry: './src/index.jsx',
-  output: { path: __dirname, filename: 'bundle.js' },
+var NODE_ENV = process.env.NODE_ENV;
+
+const env = {
+  production: NODE_ENV === 'production',
+  staging: NODE_ENV === 'staging',
+  test: NODE_ENV === 'test',
+  development: NODE_ENV === 'development' || typeof NODE_ENV === 'undefined'
+};
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+const port = isProduction ? 8080 : 3000;
+
+console.log('DIRNAME --->', __dirname);
+
+const webpackConfig = {
+  // entry: "./client/src/index.jsx",
+  entry: "./index.jsx",
+  output: {
+    path: "/Users/jon/Documents/projects/iso/client/dist",
+    filename: "bundle.js"
+  },
   module: {
     loaders: [
       {
         test: /.jsx?$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react']
+          presets: ["es2015", "react"]
         }
       },
       {
         test: /\.less$/,
-        loader: 'style-loader!css-loader!less-loader'
+        loader: "style-loader!css-loader!less-loader"
       }
     ]
   },
+  devtool: "eval-source-map"
 };
 
 // dev server
+// see https://stackoverflow.com/questions/35233291/running-a-node-express-server-using-webpack-dev-server
 if (!isProduction) {
   webpackConfig.devServer = {
-    contentBase: Path.join(__dirname, './'),
-    // hot: false,
-    port: port,
-    inline: true,
-    progress: true,
     historyApiFallback: true,
+    hot: true,
+    inline: true,
+    host: 'localhost',
+    proxy: {
+      "^/*": {
+        target: `http://localhost:${port}/`,
+        secure: false
+      }
+    },
+    contentBase: Path.join(__dirname, "./"),
+    port: port,
+    progress: true
   };
+
+  webpackConfig.plugins = [
+    new webpack.HotModuleReplacementPlugin({
+      multiStep: true
+    })
+  ]
 }
 
 module.exports = webpackConfig;

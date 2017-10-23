@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom';
-import { render } from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import { render } from "react-dom";
 
 
 class Gallery extends React.Component {
@@ -13,8 +13,8 @@ class Gallery extends React.Component {
       <div className="gallery-container">
         Gallery
       </div>
-    )
+    );
   }
 }
 
-export { Gallery }
+export { Gallery };

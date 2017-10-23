@@ -1,13 +1,13 @@
-require('./index.less')
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { render } from 'react-dom';
+// require("./index.less")
+import React from "react";
+import ReactDOM from "react-dom";
+import { render } from "react-dom";
 import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'
-import { Gallery } from './components/gallery/gallery.jsx'
+} from "react-router-dom"
+import { Gallery } from "./src/components/gallery/gallery.jsx"
 
 class App extends React.Component {
   constructor(props){
@@ -30,7 +30,7 @@ class App extends React.Component {
           <Route path="/about" component={About}/>
         </div>
       </Router>
-    )
+    );
   }
 }
 
@@ -38,12 +38,12 @@ const Home = () => (
   <div>
     <h2>Home</h2>
   </div>
-)
+);
 
 const About = () => (
   <div>
     <h2>About</h2>
   </div>
-)
+);
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+render(<App/>, document.getElementById("app"));
