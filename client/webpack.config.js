@@ -20,7 +20,8 @@ const webpackConfig = {
   // entry: "./client/src/index.jsx",
   entry: "./index.jsx",
   output: {
-    path: "/Users/jon/Documents/projects/iso/client/dist",
+    path: Path.join(__dirname, 'dist'),
+    // path: "/Users/michelle/Documents/projects/iso/client/dist",
     filename: "bundle.js"
   },
   module: {
