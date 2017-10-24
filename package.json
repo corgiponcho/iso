@@ -7,10 +7,8 @@
     "build": "webpack --progress --colors --watch",
     "dev-server": "cd ./server && nodemon ./index.js localhost 8080",
     "dev-client": "cd ./client && webpack-dev-server --progress --colors --watch --port 3000",
-    "dev": "npm-run-all --parallel dev-client dev-server",
     "test:jest": "jest",
-    "test:mocha": "mocha --exit --timeout 10000 ./server/tests/*.js",
-    "test:sql": "cd ./models && node database.js"
+    "test:mocha": "mocha --exit --timeout 10000 ./server/tests/*.js"
   },
   "repository": {
     "type": "git",

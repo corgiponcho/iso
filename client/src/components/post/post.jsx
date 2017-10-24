@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { render } from "react-dom";
 
 
-class Gallery extends React.Component {
+class Posts extends React.Component {
   constructor(props){
     super(props);
 
@@ -22,13 +22,16 @@ class Gallery extends React.Component {
 
     return (
       <div className="gallery-container">
-        <h1>Posts</h1>
+        <h2>Posts</h2>
         {this.state.posts.map(post =>
-          <div key={post.id}>{post.title}</div>
+          <div key={post.id}>
+            <h3>{post.title}</h3>
+            <div>{post.body}</div>
+          </div>
         )}
       </div>
     );
   }
 }
 
-export { Gallery };
+export { Posts };

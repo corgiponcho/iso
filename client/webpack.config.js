@@ -4,11 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const isProduction = process.env.NODE_ENV === 'production';
 
 const output = Path.join(__dirname, "/dist");
-const paths = {
-  SRC: Path.resolve(__dirname, "src"),
-  JS: Path.resolve(__dirname, "src/js"),
-};
-
+const paths = { SRC: Path.resolve(__dirname, "src") };
+// TODO NODE_ENV should be set in the container
 var NODE_ENV = process.env.NODE_ENV;
 
 const webpackConfig = {
@@ -57,6 +54,7 @@ if (!isProduction) {
   };
 
   webpackConfig.plugins = [
+    // TODO: https://github.com/jantimon/html-webpack-plugin
     // new HtmlWebpackPlugin({
     //   template: Path.join(paths.SRC, "index.html"),
     // }),
@@ -66,5 +64,4 @@ if (!isProduction) {
   ]
 }
 
-console.log(webpackConfig)
 module.exports = webpackConfig;

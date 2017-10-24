@@ -28,7 +28,8 @@ models.sequelize.sync({force:true}).then(function() {
    });
 
    models.Post.create({
-     title:  "a post",
+     title:  "gas lawnmower",
+     body: "time to mow the lawn! rent this gas lawnmower for a day",
      status: "CREATED",
      lat:    "100.1",
      lon:    "200.2",

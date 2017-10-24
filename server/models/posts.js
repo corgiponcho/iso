@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     title:  { type: DataTypes.STRING },
+    body:   { type: DataTypes.STRING },
     status: { type: DataTypes.STRING },
     lat:    { type: DataTypes.DECIMAL },
     lon:    { type: DataTypes.DECIMAL }

@@ -7,7 +7,7 @@ import {
   Route,
   Link
 } from "react-router-dom"
-import { Gallery } from "./src/components/gallery/gallery.jsx"
+import { Posts } from "./src/components/post/post.jsx"
 
 class App extends React.Component {
   constructor(props){
@@ -21,12 +21,12 @@ class App extends React.Component {
           <div className="module-container">
           <ul>
           <li><Link to="/">Home</Link></li>
-            <li><Link to="/gallery">Gallery</Link></li>
+            <li><Link to="/posts">Posts</Link></li>
             <li><Link to="/about">About</Link></li>
           </ul>
           </div>
           <Route exact path="/" component={Home}/>
-          <Route path="/gallery" component={Gallery}/>
+          <Route path="/posts" component={Posts}/>
           <Route path="/about" component={About}/>
         </div>
       </Router>
