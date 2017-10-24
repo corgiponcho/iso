@@ -1,28 +1,22 @@
 const Path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const isProduction = process.env.NODE_ENV === 'production';
+
+const output = Path.join(__dirname, "/dist");
+const paths = {
+  SRC: Path.resolve(__dirname, "src"),
+  JS: Path.resolve(__dirname, "src/js"),
+};
 
 var NODE_ENV = process.env.NODE_ENV;
 
-const env = {
-  production: NODE_ENV === 'production',
-  staging: NODE_ENV === 'staging',
-  test: NODE_ENV === 'test',
-  development: NODE_ENV === 'development' || typeof NODE_ENV === 'undefined'
-};
-
-const isProduction = process.env.NODE_ENV === 'production';
-
-const port = isProduction ? 8080 : 3000;
-
-console.log('DIRNAME --->', __dirname);
-
 const webpackConfig = {
-  // entry: "./client/src/index.jsx",
   entry: "./index.jsx",
   output: {
-    path: Path.join(__dirname, 'dist'),
-    // path: "/Users/michelle/Documents/projects/iso/client/dist",
-    filename: "bundle.js"
+    path: Path.join(__dirname, "dist"),
+    filename: "bundle.js",
+    publicPath: "/src"
   },
   module: {
     loaders: [
@@ -50,23 +44,27 @@ if (!isProduction) {
     historyApiFallback: true,
     hot: true,
     inline: true,
-    host: 'localhost',
+    host: "localhost",
+    port: 3000,
     proxy: {
-      "^/*": {
-        target: `http://localhost:${port}/`,
+      "/api/v0/**": {
+        target: "http://localhost:8080",
         secure: false
       }
     },
-    contentBase: Path.join(__dirname, "./"),
-    port: port,
+    contentBase: paths.SRC,
     progress: true
   };
 
   webpackConfig.plugins = [
+    // new HtmlWebpackPlugin({
+    //   template: Path.join(paths.SRC, "index.html"),
+    // }),
     new webpack.HotModuleReplacementPlugin({
       multiStep: true
     })
   ]
 }
 
+console.log(webpackConfig)
 module.exports = webpackConfig;
