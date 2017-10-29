@@ -6,7 +6,7 @@ const posts = require('./routes/post');
 
 const isProduction = process.env.NODE_ENV === "production";
 const port = isProduction ? 3000 : 8080;
-const router = express.Router();
+const router = express.Router(); // TODO: not being used?
 
 app.set("port", port);
 

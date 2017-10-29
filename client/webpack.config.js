@@ -1,12 +1,11 @@
 const Path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const isProduction = process.env.NODE_ENV === 'production';
 
 const output = Path.join(__dirname, "/dist");
 const paths = { SRC: Path.resolve(__dirname, "src") };
-// TODO NODE_ENV should be set in the container
-var NODE_ENV = process.env.NODE_ENV;
+
+const nodeEnvironment = process.env.NODE_ENV || "development";
 
 const webpackConfig = {
   entry: "./index.jsx",
@@ -36,7 +35,7 @@ const webpackConfig = {
 
 // dev server
 // see https://stackoverflow.com/questions/35233291/running-a-node-express-server-using-webpack-dev-server
-if (!isProduction) {
+if ( process.env.NODE_ENV !== 'production' ) {
   webpackConfig.devServer = {
     historyApiFallback: true,
     hot: true,
@@ -52,7 +51,7 @@ if (!isProduction) {
     contentBase: paths.SRC,
     progress: true
   };
-
+  
   webpackConfig.plugins = [
     // TODO: https://github.com/jantimon/html-webpack-plugin
     // new HtmlWebpackPlugin({

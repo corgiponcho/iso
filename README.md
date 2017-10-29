@@ -4,12 +4,17 @@
 npm install
 ```
 
-run in dev mode
+## run in dev mode
+
+To start development process locally, you need to run the following 2 processes seperately:
+
 ```
-npm run start:dev
+npm run dev:server
+npm run dev:client
 ```
 
-run test
+## run tests
 ```
-npm test
+NODE_ENV=test npm run test:jest
+NODE_ENV=test npm run test:mocha
 ```

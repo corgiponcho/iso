@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --progress --colors --watch",
-    "dev-server": "cd ./server && nodemon ./index.js localhost 8080",
-    "dev-client": "cd ./client && webpack-dev-server --progress --colors --watch --port 3000",
+    "dev:server": "cd ./server && nodemon ./index.js localhost 8080",
+    "dev:client": "cd ./client && webpack-dev-server --progress --colors --watch --port 3000",
     "test:jest": "jest",
     "test:mocha": "mocha --exit --timeout 10000 ./server/tests/*.js"
   },
@@ -50,8 +50,10 @@
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-test-renderer": "^16.0.0",
+    "redux": "^3.7.2",
     "run-all": "^1.0.1",
     "sequelize": "^4.14.0",
     "sequelize-cli": "^3.0.0",
