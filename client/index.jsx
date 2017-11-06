@@ -5,7 +5,7 @@ import { createStore } from "redux"
 import { Provider } from "react-redux"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 
-import { Posts } from "./src/components/post/post.jsx"
+import { Posts } from "./src/components/posts.jsx"
 import reducers from "./src/reducers"
 import PostContainer from "./src/containers/postContainer.js"
 

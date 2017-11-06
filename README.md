@@ -6,7 +6,7 @@ npm install
 
 ## run in dev mode
 
-To start development process locally, you need to run the following 2 processes seperately:
+To start development process locally, you need to run the following 2 processes separately:
 
 ```
 npm run dev:server
