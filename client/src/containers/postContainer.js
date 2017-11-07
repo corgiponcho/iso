@@ -1,24 +1,12 @@
 import { connect } from "react-redux"
-import { getAllPosts } from "../actions";
 import Posts from "../components/posts.jsx"
 
 const mapStateToProps = state => {
-	return {
-		posts: state.posts
-	}
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onPostClick: () => {
-      dispatch(getAllPosts())
-    }
-  }
+	return state.allPosts
 }
 
 const PostContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(Posts)
 
 export default PostContainer

@@ -1,11 +1,15 @@
 import React from "react";
 import { render } from "react-dom";
+import { fetchPosts } from "../actions/index.js";
 
 class Posts extends React.Component {
   constructor(props){
     super(props);
+  }
 
-    console.log("PROPS", props)
+  componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(fetchPosts())
   }
 
   render() {
@@ -18,7 +22,7 @@ class Posts extends React.Component {
             <h3>{post.title}</h3>
             <div>{post.body}</div>
           </div>
-        )}
+        ) }
       </div>
     );
   }
